@@ -1,0 +1,57 @@
+name:                servant-tutorial
+version:             0.1.0.0
+github:              "dowdiness/servant-tutorial"
+license:             BSD3
+author:              "Koji Ishimoto"
+maintainer:          "koji.ishimoto@gmail.com"
+copyright:           "2020 Koji Ishimoto"
+
+extra-source-files:
+- README.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/dowdiness/servant-tutorial#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- aeson
+- servant-server
+- wai
+- warp
+
+library:
+  source-dirs: src
+
+executables:
+  servant-tutorial-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - base
+    - servant-tutorial
+
+tests:
+  servant-tutorial-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - base
+    - servant-tutorial
+    - hspec
+    - hspec-wai
+    - hspec-wai-json
+    - aeson
